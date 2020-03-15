@@ -102,6 +102,9 @@ except:
     print("\n> The account does not exist or is a key account")
     sys.exit()
 
+if not os.path.exists("./img/"):
+    os.mkdir("./img/")
+
 if not os.path.exists("./img/{}/".format(account_name)):
     os.mkdir("./img/{}/".format(account_name))
 
@@ -126,8 +129,7 @@ def download():
                 with open("./img/{}/".format(account_name) + filename, "wb") as f:
                     f.write(res.content)
         except FileNotFoundError:
-            print("> Please make a [img] folder")
-            sys.exit()
+            pass
         print("✔Downloaded " + str(len(img_objs)) + " images")
 
 
